@@ -46,6 +46,7 @@ const MainMenu = Object.assign(
               className="main-menu-trigger"
             >
               {HamburgerMenuIcon}
+              
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
               onClickOutside={onClickOutside}

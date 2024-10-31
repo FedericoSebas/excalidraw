@@ -234,13 +234,22 @@ const LayerUI = ({
       !appState.zenModeEnabled &&
       !appState.viewModeEnabled;
 
+      const [isButtonPressed, setIsButtonPressed] = React.useState(false);
+
+    const handleButtonClick = () => {
+      setIsButtonPressed(!isButtonPressed);
+    };
+
     return (
       <FixedSideContainer side="top">
         <div className="App-menu App-menu_top">
           <Stack.Col gap={6} className={clsx("App-menu_top__left")}>
             {renderCanvasActions()}
-            {shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
+            {isButtonPressed && shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
           </Stack.Col>
+    
+    <button style={{"position": "absolute",
+    "top": "7vh"}} onClick={handleButtonClick}>Click</button>
           {!appState.viewModeEnabled && (
             <Section heading="shapes" className="shapes-section">
               {(heading: React.ReactNode) => (
@@ -333,6 +342,7 @@ const LayerUI = ({
               },
             )}
           >
+            
             {appState.collaborators.size > 0 && (
               <UserList
                 collaborators={appState.collaborators}
